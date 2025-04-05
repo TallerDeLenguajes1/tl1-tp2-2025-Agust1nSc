@@ -12,6 +12,7 @@ struct compu
 
 void listarPCs(struct compu PC[], int cantidad);
 void mostrarMasVieja(struct compu PC[], int cantidad);
+void mostrarMasVeloz(struct compu PC[], int cantidad);
 
 int main()
 {
@@ -38,6 +39,7 @@ int main()
 
     listarPCs(PC, cantidad);
     mostrarMasVieja(PC, cantidad);
+    mostrarMasVeloz(PC, cantidad);
 
     return 0;
 }
@@ -47,7 +49,7 @@ void listarPCs(struct compu PC[], int cantidad)
 
     for (int i = 0; i < cantidad; i++)
     {
-        printf("La pc numero, %d tiene velocidad de: %d, es del anio: %d, tiene %d nucleos y es del tipo: %s\n", i, PC[i].velocidad, PC[i].anio, PC[i].cantidad_nucleos, PC[i].tipo_cpu);
+        printf("La pc numero, %d tiene velocidad de: %d Ghz, es del anio: %d, tiene %d nucleos y es del tipo: %s\n", i + 1, PC[i].velocidad, PC[i].anio, PC[i].cantidad_nucleos, PC[i].tipo_cpu);
     }
 }
 
@@ -63,5 +65,20 @@ void mostrarMasVieja(struct compu PC[], int cantidad)
             PcMasVieja = i;
         }
     }
-    printf("La pc mas vieja es la, %d tiene velocidad de: %d, es del anio: %d, tiene %d nucleos y es del tipo: %s\n", PcMasVieja, PC[PcMasVieja].velocidad, PC[PcMasVieja].anio, PC[PcMasVieja].cantidad_nucleos, PC[PcMasVieja].tipo_cpu);
+    printf("La pc mas vieja es la, %d tiene velocidad de: %d Ghz, es del anio: %d, tiene %d nucleos y es del tipo: %s\n", PcMasVieja + 1, PC[PcMasVieja].velocidad, PC[PcMasVieja].anio, PC[PcMasVieja].cantidad_nucleos, PC[PcMasVieja].tipo_cpu);
+}
+
+void mostrarMasVeloz(struct compu PC[], int cantidad){
+
+
+    int PcMasVeloz = 0;
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (PC[i].velocidad > PC[PcMasVeloz].velocidad)
+        {
+            PcMasVeloz = i;
+        }
+    }
+    printf("La pc mas veloz es la, %d tiene velocidad de: %d Ghz, es del anio: %d, tiene %d nucleos y es del tipo: %s\n", PcMasVeloz + 1, PC[PcMasVeloz].velocidad, PC[PcMasVeloz].anio, PC[PcMasVeloz].cantidad_nucleos, PC[PcMasVeloz].tipo_cpu);
 }
